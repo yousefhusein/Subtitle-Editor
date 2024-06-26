@@ -1,0 +1,26 @@
+.dialogue-editor {
+    .current-dialogue-number {
+        min-width: 50px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .current-dialogue-timeinput {
+        width: 120px;
+        text-align: center;
+    }
+}
+
+.dark-theme #dialogueEditor, .dark-theme .dialogue-editor .current-dialogue-timeinput {
+    background-color: #232525;
+    color: #fafafa;
+}
+
+.output-video {
+    width: 75%;
+    height: 300px;
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}

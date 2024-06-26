@@ -1,0 +1,45 @@
+@import url('https://kit-pro.fontawesome.com/releases/latest/css/pro.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+* {
+    font-family: "Righteous", cursive, "Tajawal", sans-serif;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #cccccc;
+        border-radius: 15px;
+        min-height: 50px;
+    }
+}
+
+body {
+    font-size: 18px;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0;
+        height: 100%;
+
+        &.centered {
+            justify-content: center;
+        }
+    }
+}
+
+select {
+    cursor: pointer;
+    user-select: none;
+    max-width: 200px;
+}

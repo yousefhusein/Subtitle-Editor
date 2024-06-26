@@ -1,0 +1,20 @@
+.video-wrapper {
+    width: 100%;
+    height: 300px;
+    z-index: 9999;
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    background-color: #1f1824 !important;
+    transition: all 300ms ease-in-out;
+
+    .fa-times {
+        font-size: 18px;
+
+    }
+
+    .video-container .video-element {
+        height: 265px;
+        width: 100%;
+    }
+}

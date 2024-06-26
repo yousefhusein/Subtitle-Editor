@@ -1,0 +1,41 @@
+.editor-wrapper .subtitle {
+	border-radius: 5px;
+	display: flex;
+	gap: 2px;
+	width: 100%;
+	padding: 5px;
+	background-color: #ffffff;
+	color: black;
+	user-select: none;
+	border: 1.1px solid #cccccc;
+
+	&[aria-selected="true"] {
+		border-color: #0069ff;
+	}
+
+	.subtitle-number {
+		height: 100%;
+		padding: 0 15px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 1.2rem;
+		margin: auto 0;
+	}
+
+	.subtitle-text {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.subtitle-times {
+		font-weight: 300;
+	}
+}
+
+.dark-theme .subtitle {
+	background-color: #232525;
+	border-color: #232525;
+	color: whitesmoke;
+}

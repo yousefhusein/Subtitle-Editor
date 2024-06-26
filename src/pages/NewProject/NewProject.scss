@@ -1,0 +1,11 @@
+.project-card {
+    width: 400px;
+
+    @media (min-width: 776px) {
+        width: 500px;
+    }
+
+    @media (min-width: 1116px) {
+        width: 600px;
+    }
+}
