@@ -1,4 +1,4 @@
-const TRANSLATE_API_URL = "https://inconclusive-hip-vibraphone.glitch.me/translate";
+const TRANSLATE_API_URL = "https://chat-server-test.onrender.com/translate";
 
 export default async function translate (text, sl, tl) {
     try {
@@ -9,8 +9,8 @@ export default async function translate (text, sl, tl) {
 			},
 			body: JSON.stringify({
                 text: text.trim(),
-                sl: String(sl),
-                tl: String(tl)
+                source: sl.toString().toLowerCase(),
+                target: tl.toString().toLowerCase()
             })
         });
         const data = await response.json();
@@ -19,7 +19,9 @@ export default async function translate (text, sl, tl) {
             return null;
         }
 
-        return data;
+        return Object.create({
+            text: data.translatedText || data.to?.text || text
+        });
     } catch (error) {
         return null;
     }

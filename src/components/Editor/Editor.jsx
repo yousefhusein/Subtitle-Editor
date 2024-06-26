@@ -1,8 +1,11 @@
+import "./Editor.scss";
+
 import React, { useEffect, useState } from "react";
-import translate from "../../assets/functions/translate";
-import selectFile from "../../assets/functions/selectFile";
+
+import Swal from "sweetalert2";
 import VideoWrapper from "../VideoWrapper/VideoWrapper";
-import "./Editor.scss"; 
+import selectFile from "../../assets/functions/selectFile";
+import translate from "../../assets/functions/translate";
 
 function Editor ({ currentDialogue, setCurrentDialogue, project, setDialogues }) {
 	const [dialogue, setDialogue] = useState(currentDialogue.clone());
@@ -22,9 +25,25 @@ function Editor ({ currentDialogue, setCurrentDialogue, project, setDialogues })
 	}
 
 	const translateClick = () => {
-		translate(dialogue.text, "auto", "en").then(result => {
-			if (result && !result.errors) {
-				setDialogue(dialogue.setText(result.text));
+		Swal.fire({
+			title: "Translate",
+			html: `<div class="d-flex w-100" style="justify-content:center">
+					<select class="form-select rounded-0 display-block" id="language-swal" style="width: 160px">
+						<option value="ku">Kurmanji</option>
+						<option value="ar">العربية</option>
+						<option value="en">English</option>
+						<option value="de">Deutsch</option>
+					</select>
+					</div>`,
+			focusConfirm: true,
+			confirmButtonText: "Translate",
+			preConfirm: () => {
+				const sourceLang = document.getElementById("language-swal")?.value
+				translate(dialogue.text, "auto", sourceLang || 'ar').then(result => {
+					if (result && !result.errors) {
+						setDialogue(dialogue.setText(result.text));
+					}
+				});
 			}
 		});
 	}
