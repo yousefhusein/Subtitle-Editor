@@ -4,10 +4,11 @@ import React, { useEffect, useState } from "react";
 
 import Swal from "sweetalert2";
 import VideoWrapper from "../VideoWrapper/VideoWrapper";
+import { language } from "../../assets/languages";
 import selectFile from "../../assets/functions/selectFile";
 import translate from "../../assets/functions/translate";
 
-function Editor ({ currentDialogue, setCurrentDialogue, project, setDialogues }) {
+export function Editor ({ currentDialogue, setCurrentDialogue, project, setDialogues }) {
 	const [dialogue, setDialogue] = useState(currentDialogue.clone());
 	const [videoURL, setVideoURL] = useState("");
 	const [showVideo, setShowVideo] = useState(false);
@@ -29,10 +30,14 @@ function Editor ({ currentDialogue, setCurrentDialogue, project, setDialogues })
 			title: "Translate",
 			html: `<div class="d-flex w-100" style="justify-content:center">
 					<select class="form-select rounded-0 display-block" id="language-swal" style="width: 160px">
-						<option value="ku">Kurmanji</option>
 						<option value="ar">العربية</option>
+						<option value="ku">Kurmanji</option>
 						<option value="en">English</option>
 						<option value="de">Deutsch</option>
+						
+						<optgroup label="More Languages">
+							${Object.entries(language).map(([key,value]) => `<option value="${key}">${value}</option>`).join("\n")}
+						</optgroup>
 					</select>
 					</div>`,
 			focusConfirm: true,
@@ -78,7 +83,6 @@ function Editor ({ currentDialogue, setCurrentDialogue, project, setDialogues })
 					<button className="btn btn-success btn-floating shadow-0" onClick={() => setCurrentDialogue(dialogue.clone())}>
 						<i className="fas fa-save"></i>
 					</button>
-
 					<button className="btn btn-danger btn-floating shadow-0" onClick={videoClick}>
 						<i className="fas fa-play"></i>
 					</button>
